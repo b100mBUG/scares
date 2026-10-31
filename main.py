@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse, PlainTextResponse
 
-BASE = Path(__file__).resolve().parent
+BASE = Path(__file__).resolve().parent   
 INDEX = BASE / "static" / "index.html"
 
 app = FastAPI(title="October 31", docs_url=None, redoc_url=None, openapi_url=None)
