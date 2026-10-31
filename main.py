@@ -3,12 +3,15 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse, PlainTextResponse
+from fastapi.staticfiles import StaticFiles
 
-BASE = Path(__file__).resolve().parent   
-INDEX = BASE / "static" / "index.html"
+BASE = Path(__file__).resolve().parent
+STATIC = BASE / "static"
+INDEX = STATIC / "index.html"
 
 app = FastAPI(title="October 31", docs_url=None, redoc_url=None, openapi_url=None)
 app.add_middleware(GZipMiddleware, minimum_size=1024)
+app.mount("/img", StaticFiles(directory=STATIC / "img"), name="img")
 
 HEADERS = {
     "Cache-Control": "public, max-age=600",
