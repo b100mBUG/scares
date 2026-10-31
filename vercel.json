@@ -1,0 +1,8 @@
+{
+  "builds": [
+    { "src": "main.py", "use": "@vercel/python", "config": { "includeFiles": "static/**" } }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "main.py" }
+  ]
+}
